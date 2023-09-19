@@ -6,7 +6,7 @@ export default function Home() {
       <h2>Demo with Space-X API</h2>
       <ul>
         <li>
-          <Link href="/swr">Rockets</Link>
+          <Link href="/spacex">Index</Link>
         </li>
       </ul>
     </main>

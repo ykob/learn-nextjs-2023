@@ -1,18 +1,15 @@
 "use client";
 
 import useSWR from "swr";
+import { fetcher } from "@/src/common/utils";
 
 type Rocket = {
   id: string;
   name: string;
 };
 
-const fetcher = <T,>(url: string): Promise<T> => {
-  return fetch(url).then((r) => r.json());
-};
-
 const useRockets = () => {
-  return useSWR<Rocket, Error>(
+  return useSWR<Rocket[], Error>(
     "https://api.spacexdata.com/v4/rockets/",
     fetcher
   );
@@ -21,8 +18,8 @@ const useRockets = () => {
 export default function Swr() {
   const { data, error, isLoading } = useRockets();
 
-  if (error || !data) return <div>failed to load</div>;
+  if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
 
-  return <div>hello {data.name}!</div>;
+  return <div>hello {data![0].name}!</div>;
 }

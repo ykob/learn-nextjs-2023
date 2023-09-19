@@ -5,11 +5,18 @@ type Rocket = {
   id: string;
   name: string;
 };
+type Ship = {
+  id: string;
+  name: string;
+};
 
 const URI = "https://api.spacexdata.com/v4";
 
-const useRockets = () => {
-  return useSWR<Rocket[], Error>(`${URI}/rockets/`, fetcher);
-};
+const useRocket = (id: number) =>
+  useSWR<Rocket[], Error>(`${URI}/rockets/${id}`, fetcher);
+const useRockets = () => useSWR<Rocket[], Error>(`${URI}/rockets/`, fetcher);
+const useShip = (id: number) =>
+  useSWR<Ship[], Error>(`${URI}/ships/${id}`, fetcher);
+const useShips = () => useSWR<Ship[], Error>(`${URI}/ships/`, fetcher);
 
-export { useRockets };
+export { useRocket, useRockets, useShip, useShips };

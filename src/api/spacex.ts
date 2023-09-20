@@ -1,15 +1,6 @@
 import useSWR from "swr";
 import { fetcher } from "@/src/common/utils";
 
-type Rocket = {
-  id: string;
-  name: string;
-};
-type Ship = {
-  id: string;
-  name: string;
-};
-
 const URI = "https://api.spacexdata.com/v4";
 
 const useRocket = (id: number) =>

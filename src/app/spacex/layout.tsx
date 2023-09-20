@@ -18,9 +18,6 @@ export default function SpaceXLayout({
             <Link href="/spacex/rockets">Rockets</Link>
           </li>
         </ul>
-        <p>
-          <Link href="/">Back to Home</Link>
-        </p>
       </sub>
     </>
   );

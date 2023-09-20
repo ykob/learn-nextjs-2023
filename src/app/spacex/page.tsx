@@ -1,12 +1,14 @@
-"use client";
+import Link from "next/link";
 
-import { useRockets } from "@/src/api/spacex";
-
-export default function Swr() {
-  const { data, error, isLoading } = useRockets();
-
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
-
-  return <div>hello {data![0].name}!</div>;
+export default function Home() {
+  return (
+    <main>
+      <h2>Demo with Space-X API</h2>
+      <ul>
+        <li>
+          <Link href="/spacex/rockets">Rockets</Link>
+        </li>
+      </ul>
+    </main>
+  );
 }

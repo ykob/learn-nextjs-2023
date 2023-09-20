@@ -1,14 +1,7 @@
-import Link from "next/link";
-
-export default function Home() {
+export default function SpaceXHome() {
   return (
-    <main>
+    <div>
       <h2>Demo with Space-X API</h2>
-      <ul>
-        <li>
-          <Link href="/spacex/rockets">Rockets</Link>
-        </li>
-      </ul>
-    </main>
+    </div>
   );
 }

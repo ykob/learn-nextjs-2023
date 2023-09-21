@@ -1,13 +1,12 @@
-import ContextBody from "./ContextBody";
-import ContextDemo from "./ContextDemo";
+import ContextController from "./ContextController";
 import ContextReferences from "./ContextReferences";
 import ContextSummary from "./ContextSummary";
-import DemoContext from "./DemoContext";
+import DemoProvider, { DemoContext } from "./DemoProvider";
 
 export {
-  ContextBody,
-  ContextDemo,
+  ContextController,
   ContextReferences,
   ContextSummary,
   DemoContext,
+  DemoProvider,
 };

@@ -5,6 +5,9 @@ export default function Home() {
     <main>
       <ul>
         <li>
+          <Link href="/context">useContext demo</Link>
+        </li>
+        <li>
           <Link href="/spacex">Demo with Space-X API</Link>
         </li>
       </ul>

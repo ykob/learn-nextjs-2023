@@ -1,15 +1,5 @@
-import {
-  ContextDemo,
-  ContextReferences,
-  ContextSummary,
-} from "@/src/features/";
+import { ContextBody } from "@/src/features/context";
 
 export default function ContextHome() {
-  return (
-    <main>
-      <ContextSummary />
-      <ContextDemo />
-      <ContextReferences />
-    </main>
-  );
+  return <ContextBody />;
 }

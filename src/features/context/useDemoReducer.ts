@@ -15,7 +15,13 @@ type State = {
   isOpen: boolean;
 };
 
-const DemoReducer = (state: State, action: Action): State => {
+const initState = (): State => {
+  return {
+    color: "#00",
+    isOpen: false,
+  };
+};
+const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "toggle":
       return {
@@ -31,9 +37,5 @@ const DemoReducer = (state: State, action: Action): State => {
       throw Error("Unknown action.");
   }
 };
-const DemoReducerState: State = {
-  color: "#00",
-  isOpen: false,
-};
 
-export const useDemoReducer = () => useReducer(DemoReducer, DemoReducerState);
+export const useDemoReducer = () => useReducer(reducer, null, initState);

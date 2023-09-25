@@ -5,11 +5,13 @@ import { createPortal } from "react-dom";
 import { useDemoReducer } from ".";
 
 type ContextType = {
+  changeColor: (color: string) => void;
   isOpen: boolean;
   toggle: () => void;
 };
 
 export const DemoContext = createContext<ContextType>({
+  changeColor: () => {},
   isOpen: false,
   toggle: () => {},
 });
@@ -21,6 +23,12 @@ export default function DemoProvider({
 }) {
   const [state, dispatch] = useDemoReducer();
 
+  const changeColor = (color: string) => {
+    dispatch({
+      type: "changeColor",
+      color,
+    });
+  };
   const toggle = () => {
     dispatch({
       type: "toggle",
@@ -28,11 +36,11 @@ export default function DemoProvider({
   };
 
   return (
-    <DemoContext.Provider value={{ isOpen: state.isOpen, toggle }}>
+    <DemoContext.Provider value={{ changeColor, isOpen: state.isOpen, toggle }}>
       {children}
       {state.isOpen &&
         createPortal(
-          <div>
+          <div style={{ color: state.color }}>
             <i>This is a portal element.</i>
           </div>,
           document.body

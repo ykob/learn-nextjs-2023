@@ -1,16 +1,17 @@
 "use client";
 
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import { createPortal } from "react-dom";
+import { useDemoReducer } from ".";
 
 type ContextType = {
   isOpen: boolean;
-  setIsOpen: (value: boolean) => void;
+  toggle: () => void;
 };
 
 export const DemoContext = createContext<ContextType>({
   isOpen: false,
-  setIsOpen: () => {},
+  toggle: () => {},
 });
 
 export default function DemoProvider({
@@ -18,12 +19,18 @@ export default function DemoProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [state, dispatch] = useDemoReducer();
+
+  const toggle = () => {
+    dispatch({
+      type: "toggle",
+    });
+  };
 
   return (
-    <DemoContext.Provider value={{ isOpen, setIsOpen }}>
+    <DemoContext.Provider value={{ isOpen: state.isOpen, toggle }}>
       {children}
-      {isOpen &&
+      {state.isOpen &&
         createPortal(
           <div>
             <i>This is a portal element.</i>

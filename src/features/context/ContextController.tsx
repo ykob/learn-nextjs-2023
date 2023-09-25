@@ -7,7 +7,7 @@ export default function ContextController() {
   const demo = useContext(DemoContext);
 
   const onClickButton = () => {
-    demo.setIsOpen(!demo.isOpen);
+    demo.toggle();
   };
 
   return (

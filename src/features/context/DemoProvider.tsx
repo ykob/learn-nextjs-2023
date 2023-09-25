@@ -5,14 +5,14 @@ import { createPortal } from "react-dom";
 import { useDemoReducer } from ".";
 
 type ContextType = {
-  changeColor: (color: string) => void;
   isOpen: boolean;
+  changeColor: (color: string) => void;
   toggle: () => void;
 };
 
 export const DemoContext = createContext<ContextType>({
-  changeColor: () => {},
   isOpen: false,
+  changeColor: () => {},
   toggle: () => {},
 });
 
